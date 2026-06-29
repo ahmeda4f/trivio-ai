@@ -1,0 +1,35 @@
+name: Trivio AI Pipeline
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch: 
+
+jobs:
+  run-ai-models:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Cache HuggingFace Model
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/huggingface
+          key: ${{ runner.os }}-huggingface-all-MiniLM-L6-v2
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run AI Embedding & Update Script
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+        run: python generate_embeddings.py
