@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-multipart
+opencv-python-headless
+deepface
+tf-keras
+numpy
+ultralytics
+insightface
+onnxruntime
+numpy
+faiss-cpu
+orjson
