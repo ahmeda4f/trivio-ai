@@ -1,6 +1,7 @@
 # ⚽ Trivio AI Services
 
 **Graduation Project** 
+
 Trivio is a football social media platform powered by modern AI technologies including LLMs, Retrieval-Augmented Generation (RAG), Computer Vision, Recommendation Systems, and Natural Language Processing (NLP).
 
 This repository contains the AI backend services that power Trivio's intelligent features.
